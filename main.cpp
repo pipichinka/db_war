@@ -629,7 +629,7 @@ void create_brigade(std::ostream& s, int head){
 
 
 void create_division(std::ostream& s, int head){
-    std::string division_name = "brigade " + std::to_string(counter_for_subdivision);
+    std::string division_name = "division " + std::to_string(counter_for_subdivision);
     military_subdivision division(division_name, DIVISION, head);
     division.print_values(s);
     std::string m_name = generate_name();
@@ -660,7 +660,7 @@ void create_army(std::ostream& s){
         create_brigade(s, army.id);
     }
     for (int i = 0; i < number_of_divisions; i++){
-        create_division(s, army.id);
+        create_corp(s, army.id);
     }
     for (int i = 0; i < number_of_corps; i++){
         create_division(s, army.id);
