@@ -471,7 +471,7 @@ void create_squad(std::ostream& s, int head, std::vector<int>& cons, bool disloc
     int number_of_soldiers = rand() % 5;
     for (int i = 0; i < number_of_soldiers; i++){
         std::string sol_name = generate_name();
-        employee sol(CORPORAL, squad.id, sol_name, -1);
+        employee sol(SOLDIER, squad.id, sol_name, -1);
         sol.print_values(s);
         soldier sol1(sol.id, generate_random_date());
         sol1.print_values(s);
