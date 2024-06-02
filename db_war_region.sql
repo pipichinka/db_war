@@ -195,10 +195,11 @@ CREATE TABLE IF NOT EXISTS "transport"(
 );
 
 CREATE TABLE IF NOT EXISTS "unit_transport"(
+	"id" bigserial NOT NULL,
 	"unit_id" bigint NOT NULL,
 	"transport_id" bigint NOT NULL,
 	"amount" integer NOT NULL CHECK("amount" > 0),
-	PRIMARY KEY("unit_id", "transport_id")
+	PRIMARY KEY("id")
 );
 
 CREATE TABLE IF NOT EXISTS "weapon_types"(
@@ -249,10 +250,11 @@ CREATE TABLE IF NOT EXISTS "weapons"(
 );
 
 CREATE TABLE IF NOT EXISTS "unit_weapons"(
+	"id" bigserial NOT NULL,
 	"unit_id" bigint NOT NULL,
 	"weapon_id" bigint NOT NULL,
 	"amount" integer NOT NULL CHECK("amount" > 0),
-	PRIMARY KEY("unit_id", "weapon_id")
+	PRIMARY KEY("id")
 );
 
 CREATE TABLE IF NOT EXISTS "unit_constructions"(
