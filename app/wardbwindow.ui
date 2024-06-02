@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>WarDBWindow</class>
+ <widget class="QMainWindow" name="WarDBWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>WarDBWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QGroupBox" name="groupBox">
+      <property name="title">
+       <string>GroupBox</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="2" column="3">
+        <widget class="QPushButton" name="lieutenant_colonels">
+         <property name="text">
+          <string>lieutenant colonels</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="4">
+        <widget class="QPushButton" name="sergeants">
+         <property name="text">
+          <string>sergeants</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="4">
+        <widget class="QPushButton" name="corporals">
+         <property name="text">
+          <string>corporals</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="5">
+        <widget class="QPushButton" name="company">
+         <property name="text">
+          <string>company</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="5">
+        <widget class="QPushButton" name="pushButton_3">
+         <property name="text">
+          <string>platoon</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QPushButton" name="infantry_combat_vehicles">
+         <property name="text">
+          <string>infantry combat vehicles</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QPushButton" name="generals">
+         <property name="text">
+          <string>generals</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="4">
+        <widget class="QPushButton" name="ensigns">
+         <property name="text">
+          <string>ensigns</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QPushButton" name="rifles">
+         <property name="text">
+          <string>rifles</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="5">
+        <widget class="QPushButton" name="division">
+         <property name="text">
+          <string>division</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QPushButton" name="war_regions">
+         <property name="text">
+          <string>war regions</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="4">
+        <widget class="QPushButton" name="pushButton_9">
+         <property name="text">
+          <string>soldiers</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="5">
+        <widget class="QPushButton" name="unit">
+         <property name="text">
+          <string>unit</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="5">
+        <widget class="QPushButton" name="corp">
+         <property name="text">
+          <string>corp</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QPushButton" name="table_assault_rifles">
+         <property name="text">
+          <string>assault rifles</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="4">
+        <widget class="QPushButton" name="sergeantmajors">
+         <property name="text">
+          <string>sergeantmajors</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="3">
+        <widget class="QPushButton" name="lieutenants">
+         <property name="text">
+          <string>lieutenants</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QPushButton" name="tanks">
+         <property name="text">
+          <string>tanks</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QPushButton" name="unit_transport">
+         <property name="text">
+          <string>unit transport</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="3">
+        <widget class="QPushButton" name="captains">
+         <property name="text">
+          <string>captains</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QPushButton" name="missile_weapons">
+         <property name="text">
+          <string>missile weapons</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="3">
+        <widget class="QPushButton" name="majors">
+         <property name="text">
+          <string>majors</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QPushButton" name="unit_weapons">
+         <property name="text">
+          <string>unit weapons</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QPushButton" name="artilleries">
+         <property name="text">
+          <string>artilleries</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QPushButton" name="places">
+         <property name="text">
+          <string>places</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="2">
+        <widget class="QPushButton" name="vehicles">
+         <property name="text">
+          <string>vehicles</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QPushButton" name="unit_construction">
+         <property name="text">
+          <string>unit construction</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QPushButton" name="tracktors">
+         <property name="text">
+          <string>tracktors</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="5">
+        <widget class="QPushButton" name="army">
+         <property name="text">
+          <string>army</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="3">
+        <widget class="QPushButton" name="colonels">
+         <property name="text">
+          <string>colonels</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="5">
+        <widget class="QPushButton" name="brigade">
+         <property name="text">
+          <string>brigade</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="5">
+        <widget class="QPushButton" name="squad">
+         <property name="text">
+          <string>squad</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="groupBox_2">
+      <property name="title">
+       <string>GroupBox</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="1" column="6">
+        <widget class="QPushButton" name="report_7_2">
+         <property name="text">
+          <string>report_7_2</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="4">
+        <widget class="QPushButton" name="report_5_4">
+         <property name="text">
+          <string>report_5_4</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QPushButton" name="report_3_3">
+         <property name="text">
+          <string>report_3_3</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="4">
+        <widget class="QPushButton" name="report_5_1">
+         <property name="text">
+          <string>report_5_1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QPushButton" name="report_3_4">
+         <property name="text">
+          <string>report_3_4</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="5">
+        <widget class="QPushButton" name="report_6_4">
+         <property name="text">
+          <string>report_6_4</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QPushButton" name="report_9_1">
+         <property name="text">
+          <string>report_9_1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QPushButton" name="report_3_1">
+         <property name="text">
+          <string>report_3_1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="6">
+        <widget class="QPushButton" name="report_7_1">
+         <property name="text">
+          <string>report_7_1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="2">
+        <widget class="QPushButton" name="report_3_5">
+         <property name="text">
+          <string>report_3_5</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="4">
+        <widget class="QPushButton" name="report_5_3">
+         <property name="text">
+          <string>report_5_3</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="4">
+        <widget class="QPushButton" name="report_5_2">
+         <property name="text">
+          <string>report_5_2</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="6">
+        <widget class="QPushButton" name="report_7_3">
+         <property name="text">
+          <string>report_7_3</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="5">
+        <widget class="QPushButton" name="report_6_1">
+         <property name="text">
+          <string>report_6_1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="5">
+        <widget class="QPushButton" name="report_6_2">
+         <property name="text">
+          <string>report_6_2</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QPushButton" name="report_2_2">
+         <property name="text">
+          <string>report_2_2</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="7">
+        <widget class="QPushButton" name="report_8_2">
+         <property name="text">
+          <string>report_8_2</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QPushButton" name="report_9_3">
+         <property name="text">
+          <string>report_9_3</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QPushButton" name="pushButton">
+         <property name="text">
+          <string>report_2_1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QPushButton" name="report_3_2">
+         <property name="text">
+          <string>report_3_2</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QPushButton" name="report_1_3">
+         <property name="text">
+          <string>report_1_3</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QPushButton" name="report_2_4">
+         <property name="text">
+          <string>report_2_4</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QPushButton" name="report_1_1">
+         <property name="text">
+          <string>report_1_1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QPushButton" name="report_9_2">
+         <property name="text">
+          <string>report_9_2</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QPushButton" name="report_2_5">
+         <property name="text">
+          <string>report_2_5</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QPushButton" name="report_2_3">
+         <property name="text">
+          <string>report_2_3</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QPushButton" name="report_4">
+         <property name="text">
+          <string>report_4</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="5">
+        <widget class="QPushButton" name="report_6_3">
+         <property name="text">
+          <string>report_6_3</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="7">
+        <widget class="QPushButton" name="report_8_1">
+         <property name="text">
+          <string>report_8_1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QPushButton" name="report_1_2">
+         <property name="text">
+          <string>report_1_2</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0">
+        <widget class="QPushButton" name="report_9_4">
+         <property name="text">
+          <string>report_9_4</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QPushButton" name="report_10_1">
+         <property name="text">
+          <string>report_10_1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QPushButton" name="report_10_2">
+         <property name="text">
+          <string>report_10_2</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="QPushButton" name="report_10_3">
+         <property name="text">
+          <string>report_10_3</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="1">
+        <widget class="QPushButton" name="report_10_4">
+         <property name="text">
+          <string>report_10_4</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="2">
+        <widget class="QPushButton" name="report_11_1">
+         <property name="text">
+          <string>report_11_1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="2">
+        <widget class="QPushButton" name="report_11_2">
+         <property name="text">
+          <string>report_11_2</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="2">
+        <widget class="QPushButton" name="report_11_3">
+         <property name="text">
+          <string>report_11_3</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="2">
+        <widget class="QPushButton" name="report_11_4">
+         <property name="text">
+          <string>report_11_4</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="3">
+        <widget class="QPushButton" name="report_12_1">
+         <property name="text">
+          <string>report_12_1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="3">
+        <widget class="QPushButton" name="report_12_2">
+         <property name="text">
+          <string>report_12_2</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="4">
+        <widget class="QPushButton" name="report_13_1">
+         <property name="text">
+          <string>report_13_1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="4">
+        <widget class="QPushButton" name="report_13_2">
+         <property name="text">
+          <string>report_13_2</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="4">
+        <widget class="QPushButton" name="report_13_3">
+         <property name="text">
+          <string>report_13_3</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="4">
+        <widget class="QPushButton" name="report_13_4">
+         <property name="text">
+          <string>report_13_4</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+      <zorder>report_3_4</zorder>
+      <zorder>report_1_1</zorder>
+      <zorder>report_1_2</zorder>
+      <zorder>report_1_3</zorder>
+      <zorder>pushButton</zorder>
+      <zorder>report_2_2</zorder>
+      <zorder>report_2_3</zorder>
+      <zorder>report_2_4</zorder>
+      <zorder>report_2_5</zorder>
+      <zorder>report_3_1</zorder>
+      <zorder>report_3_2</zorder>
+      <zorder>report_3_3</zorder>
+      <zorder>report_3_5</zorder>
+      <zorder>report_4</zorder>
+      <zorder>report_5_1</zorder>
+      <zorder>report_5_2</zorder>
+      <zorder>report_5_3</zorder>
+      <zorder>report_5_4</zorder>
+      <zorder>report_6_1</zorder>
+      <zorder>report_6_2</zorder>
+      <zorder>report_6_3</zorder>
+      <zorder>report_6_4</zorder>
+      <zorder>report_7_1</zorder>
+      <zorder>report_7_2</zorder>
+      <zorder>report_7_3</zorder>
+      <zorder>report_8_1</zorder>
+      <zorder>report_8_2</zorder>
+      <zorder>report_9_1</zorder>
+      <zorder>report_9_2</zorder>
+      <zorder>report_9_3</zorder>
+      <zorder>report_9_4</zorder>
+      <zorder>report_10_1</zorder>
+      <zorder>report_10_2</zorder>
+      <zorder>report_10_3</zorder>
+      <zorder>report_10_4</zorder>
+      <zorder>report_11_1</zorder>
+      <zorder>report_11_2</zorder>
+      <zorder>report_11_3</zorder>
+      <zorder>report_11_4</zorder>
+      <zorder>report_12_1</zorder>
+      <zorder>report_12_2</zorder>
+      <zorder>report_13_1</zorder>
+      <zorder>report_13_2</zorder>
+      <zorder>report_13_3</zorder>
+      <zorder>report_13_4</zorder>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
