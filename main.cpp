@@ -394,8 +394,8 @@ struct construction{
     int unit_id;
     construction(std::string& name, bool dislocation, int unit_id):id(counter_for_construction++), name(name), dislocation(dislocation), unit_id(unit_id) {}  
     void print_values(std::ostream& s){
-        s << "INSERT INTO \"unit_constructions\"(\"id\", \"name\", \"dislocation\", \"unit_id\")" << std::endl;
-        s << "VALUES(" << id << ", '" << name << "', '" << dislocation << "', " << unit_id << ");" << std::endl;
+        s << "INSERT INTO \"unit_constructions\"(\"name\", \"dislocation\", \"unit_id\")" << std::endl;
+        s << "VALUES(" << name << "', '" << dislocation << "', " << unit_id << ");" << std::endl;
     }
 };
 
@@ -438,7 +438,7 @@ struct unit_weapons{
 
 void create_squad(std::ostream& s, int head, std::vector<int>& cons, bool dislocated){
     std::string squad_name = "squad " + std::to_string(counter_for_subdivision);
-    military_subdivision squad(squad_name, COMPANY, head);
+    military_subdivision squad(squad_name, SQUAD, head);
     squad.print_values(s);
     if (dislocated){
         int random_index = (rand() % (int) cons.size());
@@ -482,7 +482,7 @@ void create_squad(std::ostream& s, int head, std::vector<int>& cons, bool disloc
 
 void create_platoon(std::ostream& s, int head, std::vector<int>& cons, bool dislocated){
     std::string platoon_name = "platoon " + std::to_string(counter_for_subdivision);
-    military_subdivision platoon(platoon_name, COMPANY, head);
+    military_subdivision platoon(platoon_name, PLATOON, head);
     platoon.print_values(s);
     if (dislocated){
         int random_index = (rand() % (int) cons.size());

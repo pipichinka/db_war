@@ -12,7 +12,7 @@ $$
 DECLARE
     insert_id bigint;
 BEGIN
-    Insert Into weapons(type, name) VALUES (2, NEW.name) RETURNING id INTO insert_id;
+    Insert Into weapons(type, name) VALUES (1, NEW.name) RETURNING id INTO insert_id;
     Insert Into rifles VALUES (insert_id, NEW.fire_rate, NEW.ammo);
     return NEW;
 END;

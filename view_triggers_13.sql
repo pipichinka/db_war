@@ -13,7 +13,7 @@ $$
 DECLARE
     insert_id bigint;
 BEGIN
-    Insert Into employees(type, name, work, head) VALUES (5, NEW.name, NEW.work, NEW.head) RETURNING id INTO insert_id;
+    Insert Into employees(rank, name, work, head) VALUES (5, NEW.name, NEW.work, NEW.head) RETURNING id INTO insert_id;
     Insert Into captains VALUES (insert_id, NEW.hire_date);
     return NEW;
 END;

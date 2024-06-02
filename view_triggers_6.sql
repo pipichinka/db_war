@@ -11,7 +11,7 @@ $$
 DECLARE
     insert_id bigint;
 BEGIN
-    Insert Into transport(type, name) VALUES (1, NEW.name) RETURNING id INTO insert_id;
+    Insert Into transport(type, name) VALUES (2, NEW.name) RETURNING id INTO insert_id;
     Insert Into tanks VALUES (insert_id, NEW.ammo);
     return NEW;
 END;
