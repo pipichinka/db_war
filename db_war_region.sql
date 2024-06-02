@@ -215,7 +215,6 @@ VALUES('rifle'),
 
 CREATE TABLE IF NOT EXISTS "rifles"(
 	"id" bigint NOT NULL,
-	"name" text NOT NULL,
 	"fire_rate" integer NOT NULL CHECK("fire_rate" > 0),
 	"ammo" text NOT NULL,
 	PRIMARY KEY ("id")

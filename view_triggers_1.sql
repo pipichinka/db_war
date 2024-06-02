@@ -12,8 +12,8 @@ $$
 DECLARE
     insert_id bigint;
 BEGIN
-    Insert Into weapons(type) VALUES (2) RETURNING id INTO insert_id;
-    Insert Into assault_rifles VALUES (insert_id, NEW.name, NEW.fire_rate, NEW.ammo);
+    Insert Into weapons(type) VALUES (2, NEW.name) RETURNING id INTO insert_id;
+    Insert Into assault_rifles VALUES (insert_id, NEW.fire_rate, NEW.ammo);
     return NEW;
 END;
 $$ LANGUAGE plpgsql;
@@ -37,7 +37,8 @@ BEGIN
     if OLD.id != NEW.id THEN
         RAISE EXCEPTION 'you cannot update id in this table';
     end if;
-    UPDATE assault_rifles SET name = NEW.name, fire_rate = NEW.fire_rate, ammo = NEW.ammo WHERE id = NEW.id;
+    UPDATE assault_rifles SET fire_rate = NEW.fire_rate, ammo = NEW.ammo WHERE id = NEW.id;
+    UPDATE weapons SET name = NEW.name WHERE id = NEW.id;
     return NEW;
 END;
 $$ LANGUAGE plpgsql;
