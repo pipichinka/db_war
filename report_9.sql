@@ -38,8 +38,7 @@ SELECT weapon_id, t.sum as total_amout, weapon_types.name as type FROM t INNER J
 --для unit
 WITH t as (SELECT weapon_id, sum(unit_weapons.amount)  FROM unit_weapons
     INNER JOIN weapons on unit_weapons.weapon_id = weapons.id
-WHERE unit_id =3
+WHERE unit_id = 3
 GROUP BY weapon_id)
 SELECT weapon_id, t.sum as total_amout, weapon_types.name as type FROM t INNER JOIN weapons on t.weapon_id = weapons.id
-        INNER JOIN weapon_types on weapons.type = weapon_types.id
-WHERE weapon_types.id = ;
+        INNER JOIN weapon_types on weapons.type = weapon_types.id;

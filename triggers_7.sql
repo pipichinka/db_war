@@ -1,7 +1,7 @@
 CREATE OR REPLACE FUNCTION dislocation_consistency() RETURNS TRIGGER AS
 $$
 DECLARE
-    can_dislocate bigint;
+    can_dislocate boolean;
 BEGIN
     SELECT dislocation INTO can_dislocate from unit_constructions WHERE id = NEW.construction_id;
 

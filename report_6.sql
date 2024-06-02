@@ -40,6 +40,4 @@ WITH t as (SELECT transport_id, sum(unit_transport.amount)  FROM unit_transport
 WHERE unit_id =3
 GROUP BY transport_id)
 SELECT transport_id, t.sum as total_amout, transport_types.name as type FROM t INNER JOIN transport on t.transport_id = transport.id
-        INNER JOIN transport_types on transport.type = transport_types.id
-        
-WHERE transport_types.id = ;
+        INNER JOIN transport_types on transport.type = transport_types.id;
