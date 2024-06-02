@@ -165,28 +165,24 @@ VALUES('infantry combat vehicle'),
 
 CREATE TABLE IF NOT EXISTS "infantry_combat_vehicles"(
 	"id" bigint NOT NULL,
-	"name" text NOT NULL,
 	"capacity" integer NOT NULL CHECK("capacity" > 0),
 	PRIMARY KEY ("id")
 );
 
 CREATE TABLE IF NOT EXISTS "tanks"(
 	"id" bigint NOT NULL,
-	"name" text NOT NULL,
 	"ammo" text NOT NULL,
 	PRIMARY KEY ("id")
 );
 
 CREATE TABLE IF NOT EXISTS "tractors"(
 	"id" bigint NOT NULL,
-	"name" text NOT NULL,
 	"thrust_force" integer NOT NULL CHECK("thrust_force" > 0),
 	PRIMARY KEY ("id")
 );
 
 CREATE TABLE IF NOT EXISTS "vehicles"(
 	"id" bigint NOT NULL,
-	"name" text NOT NULL,
 	"avarage_speed" integer NOT NULL CHECK("avarage_speed" > 0),
 	PRIMARY KEY ("id")
 );
@@ -194,6 +190,7 @@ CREATE TABLE IF NOT EXISTS "vehicles"(
 CREATE TABLE IF NOT EXISTS "transport"(
 	"id" bigserial,
 	"type" bigint NOT NULL,
+	"name" text NOT NULL,
 	PRIMARY KEY ("id")
 );
 
@@ -226,7 +223,6 @@ CREATE TABLE IF NOT EXISTS "rifles"(
 
 CREATE TABLE IF NOT EXISTS "assault_rifles"(
 	"id" bigint NOT NULL,
-	"name" text NOT NULL,
 	"fire_rate" integer NOT NULL CHECK("fire_rate" > 0),
 	"ammo" text NOT NULL,
 	PRIMARY KEY ("id")
@@ -234,7 +230,6 @@ CREATE TABLE IF NOT EXISTS "assault_rifles"(
 
 CREATE TABLE IF NOT EXISTS "artilleries"(
 	"id" bigint NOT NULL,
-	"name" text NOT NULL,
 	"ammo" text NOT NULL,
 	"squad_size" integer NOT NULL CHECK ("squad_size" > 0),
 	PRIMARY KEY ("id")
@@ -242,7 +237,6 @@ CREATE TABLE IF NOT EXISTS "artilleries"(
 
 CREATE TABLE IF NOT EXISTS "missile_weapons"(
 	"id" bigint NOT NULL,
-	"name" text NOT NULL,
 	"ammo" text NOT NULL,
 	"weight" integer NOT NULL,
 	PRIMARY KEY ("id")
@@ -251,6 +245,7 @@ CREATE TABLE IF NOT EXISTS "missile_weapons"(
 CREATE TABLE IF NOT EXISTS "weapons"(
 	"id" bigserial,
 	"type" bigint NOT NULL,
+	"name" text NOT NULL,
 	PRIMARY KEY ("id")
 );
 

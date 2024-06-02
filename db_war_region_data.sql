@@ -1,64 +1,64 @@
-INSERT INTO "weapons"("type")
-VALUES(1),
- (1),
- (2),
- (2),
- (3),
- (3),
- (4),
- (4);
+INSERT INTO "weapons"("type", "name")
+VALUES(1, 'SVD'),
+ (1, 'Mosin Nagant'),
+ (2, 'ak47'),
+ (2, 'ak74'),
+ (3,'M-13'),
+ (3, '2C40'),
+ (4, 'Iskander-M'),
+ (4, 'S-400');
 
-INSERT INTO "assault_rifles" ("id", "name", "fire_rate", "ammo")
- VALUES(3, 'ak47', 600, '7,62 mm'),
- (4, 'ak74', 650, '5,45 mm');
+INSERT INTO "assault_rifles" ("id", "fire_rate", "ammo")
+ VALUES(3 , 600, '7,62 mm'),
+ (4 , 650, '5,45 mm');
 
-INSERT INTO "rifles" ("id", "name", "fire_rate", "ammo")
- VALUES(1, 'SVD', 30, '7,62 mm'),
- (2, 'Mosin Nagant', 10, '7,62 mm');
+INSERT INTO "rifles" ("id", "fire_rate", "ammo")
+ VALUES(1, 30, '7,62 mm'),
+ (2, 10, '7,62 mm');
 
-INSERT INTO "artilleries"("id", "name", "ammo", "squad_size")
- VALUES(5,'M-13', '132 mm', 2),
- (6, '2C40', '120 mm', 4);
+INSERT INTO "artilleries"("id", "ammo", "squad_size")
+ VALUES(5, '132 mm', 2),
+ (6, '120 mm', 4);
 
-INSERT INTO "missile_weapons"("id", "name", "ammo", "weight")
- VALUES(7, 'Iskander-M', 'quasi-ballistic missiles', 4.6),
- (8, 'S-400', 'surface-to-air missiles', 35);
+INSERT INTO "missile_weapons"("id", "ammo", "weight")
+ VALUES(7, 'quasi-ballistic missiles', 4.6),
+ (8, 'surface-to-air missiles', 35);
 
 
 
-INSERT INTO "transport"("type")
- VALUES(1),
- (1),
- (1),
- (2),
- (2),
- (2),
- (3),
- (3),
- (3),
- (4),
- (4),
- (4);
+INSERT INTO "transport"("type", "name")
+ VALUES(1, 'BMP-3'),
+ (1, 'T-15'),
+ (1, 'Kurganets-25'),
+ (2, 'T-14 Armata'),
+ (2, 'T-90M Proryv'),
+ (2, 'T-80BVM'),
+ (3, 'MT-LB'),
+ (3, 'MZKT-7930'),
+ (3, 'KAMAZ-6560'),
+ (4, 'Ural-4320'),
+ (4, 'Kamaz-5350'),
+ (4, 'GAZ-2330 Tiger');
 
-INSERT INTO "infantry_combat_vehicles" ("id", "name", "capacity")
- VALUES(1, 'BMP-3', 7),
- (2, 'T-15', 9),
- (3, 'Kurganets-25', 13);
+INSERT INTO "infantry_combat_vehicles" ("id", "capacity")
+ VALUES(1, 7),
+ (2, 9),
+ (3, 13);
 
-INSERT INTO "tanks" ("id", "name", "ammo")
- VALUES(4, 'T-14 Armata', '125mm smoothbore gun'),
- (5, 'T-90M Proryv', '125mm smoothbore gun'),
- (6, 'T-80BVM', '125mm smoothbore gun');
+INSERT INTO "tanks" ("id", "ammo")
+ VALUES(4, '125mm smoothbore gun'),
+ (5, '125mm smoothbore gun'),
+ (6, '125mm smoothbore gun');
 
-INSERT INTO "tractors" ("id", "name", "thrust_force")
- VALUES(7, 'MT-LB', 600),
- (8, 'MZKT-7930', 1000),
- (9, 'KAMAZ-6560', 800);
+INSERT INTO "tractors" ("id", "thrust_force")
+ VALUES(7, 600),
+ (8, 1000),
+ (9, 800);
 
-INSERT INTO "vehicles" ("id", "name", "avarage_speed")
-VALUES (10, 'Ural-4320', 80),
- (11, 'Kamaz-5350', 90),
- (12, 'GAZ-2330 Tiger', 100);
+INSERT INTO "vehicles" ("id", "avarage_speed")
+VALUES (10, 80),
+ (11, 90),
+ (12, 100);
 
 
 
