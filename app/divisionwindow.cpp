@@ -19,9 +19,9 @@ divisionWindow::divisionWindow(QSqlDatabase* db, QWidget *parent) :
     model->setTable("division_view");
     model->setRelation(2, QSqlRelation("army_view", "id", "name"));
     model->setJoinMode(QSqlRelationalTableModel::LeftJoin);
-    model->setHeaderData(0, Qt::Horizontal, QObject::tr("id"));
-    model->setHeaderData(1, Qt::Horizontal, QObject::tr("name"));
-    model->setHeaderData(2, Qt::Horizontal, QObject::tr("part_of"));
+    model->setHeaderData(0, Qt::Horizontal, "id");
+    model->setHeaderData(1, Qt::Horizontal, "name");
+    model->setHeaderData(2, Qt::Horizontal, "part_of");
     model->select();
     model->setEditStrategy(QSqlTableModel::OnFieldChange);
     ui->tableView->setModel(model);
@@ -46,7 +46,7 @@ void divisionWindow::on_buttonAdd_clicked()
                                      model->relation(2).displayColumn()));
     QLineEdit* nameLine = new QLineEdit;
     form.push_back(QPair<QString, QWidget*>("name", nameLine));
-    form.push_back(QPair<QString, QWidget*>("work", partEdit));
+    form.push_back(QPair<QString, QWidget*>("part_of", partEdit));
     InsertDialog dialog(form, this);
     int res = dialog.exec();
     if (res != QDialog::DialogCode::Accepted){

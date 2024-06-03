@@ -30,6 +30,7 @@ private slots:
     void on_buttonAdd_clicked();
 
     void on_buttonDelete_clicked();
+    void beforeUpdate(int row, QSqlRecord& record);
 
 private:
     Ui::majorsWindow *ui;

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>823</width>
+    <height>671</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -396,6 +396,9 @@
        </item>
        <item row="2" column="0">
         <widget class="QPushButton" name="report_1_3">
+         <property name="toolTip">
+          <string>Получить перечень всех частей дивизии, корпуса, бригады и их командиров.</string>
+         </property>
          <property name="text">
           <string>report_1_3</string>
          </property>
@@ -410,6 +413,9 @@
        </item>
        <item row="0" column="0">
         <widget class="QPushButton" name="report_1_1">
+         <property name="toolTip">
+          <string>Получить перечень всех частей военного округа и их командиров</string>
+         </property>
          <property name="text">
           <string>report_1_1</string>
          </property>
@@ -459,6 +465,9 @@
        </item>
        <item row="1" column="0">
         <widget class="QPushButton" name="report_1_2">
+         <property name="toolTip">
+          <string>Получить перечень всех частей указанной арми и их командиров</string>
+         </property>
          <property name="text">
           <string>report_1_2</string>
          </property>
@@ -624,7 +633,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>823</width>
      <height>22</height>
     </rect>
    </property>

@@ -39,10 +39,13 @@
 #include <QComboBox>
 #include "insertdialog.h"
 #include <QtDebug>
-WarDBWindow::WarDBWindow(QSqlDatabase* db, QWidget *parent)
+#include <QCheckBox>
+#include <QMessageBox>
+WarDBWindow::WarDBWindow(QSqlDatabase* db, app_roles role, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::WarDBWindow),
-      db(db)
+      db(db),
+      role(role)
 {
     ui->setupUi(this);
 }
@@ -55,6 +58,11 @@ WarDBWindow::~WarDBWindow()
 
 void WarDBWindow::on_table_assault_rifles_clicked()
 {
+    if (!(role & SUPPLIER_ROLE)){
+        QMessageBox box(QMessageBox::Icon::Critical, "error", "you must be at least SUPPLIER", QMessageBox::Ok, this);
+        box.exec();
+        return;
+    }
     AssaultRiflesTableWindow* window = new AssaultRiflesTableWindow(db, this);
     window->show();
 }
@@ -62,6 +70,11 @@ void WarDBWindow::on_table_assault_rifles_clicked()
 
 void WarDBWindow::on_unit_weapons_clicked()
 {
+    if (!(role & SUPPLIER_ROLE)){
+        QMessageBox box(QMessageBox::Icon::Critical, "error", "you must be at least SUPPLIER", QMessageBox::Ok, this);
+        box.exec();
+        return;
+    }
     UnitWeaponsTable* window = new UnitWeaponsTable(db, this);
     window->show();
 }
@@ -69,6 +82,12 @@ void WarDBWindow::on_unit_weapons_clicked()
 
 void WarDBWindow::on_war_regions_clicked()
 {
+
+    if (!(role == ADMIN_ROLE)){
+        QMessageBox box(QMessageBox::Icon::Critical, "error", "you must ADMIN", QMessageBox::Ok, this);
+        box.exec();
+        return;
+    }
     WarRegionWindow* window = new WarRegionWindow(db, this);
     window->show();
 }
@@ -76,6 +95,11 @@ void WarDBWindow::on_war_regions_clicked()
 
 void WarDBWindow::on_places_clicked()
 {
+    if (!(role == ADMIN_ROLE)){
+        QMessageBox box(QMessageBox::Icon::Critical, "error", "you must ADMIN", QMessageBox::Ok, this);
+        box.exec();
+        return;
+    }
     PlaceWindow* window = new PlaceWindow(db, this);
     window->show();
 }
@@ -83,6 +107,11 @@ void WarDBWindow::on_places_clicked()
 
 void WarDBWindow::on_unit_transport_clicked()
 {
+    if (!(role & SUPPLIER_ROLE)){
+        QMessageBox box(QMessageBox::Icon::Critical, "error", "you must be at least SUPPLIER", QMessageBox::Ok, this);
+        box.exec();
+        return;
+    }
     UnitTransport* window = new UnitTransport(db, this);
     window->show();
 }
@@ -90,6 +119,11 @@ void WarDBWindow::on_unit_transport_clicked()
 
 void WarDBWindow::on_unit_construction_clicked()
 {
+    if (!(role == ADMIN_ROLE)){
+        QMessageBox box(QMessageBox::Icon::Critical, "error", "you must ADMIN", QMessageBox::Ok, this);
+        box.exec();
+        return;
+    }
     UnitConstructionWindow* window = new UnitConstructionWindow(db, this);
     window->show();
 }
@@ -97,6 +131,11 @@ void WarDBWindow::on_unit_construction_clicked()
 
 void WarDBWindow::on_rifles_clicked()
 {
+    if (!(role & SUPPLIER_ROLE)){
+        QMessageBox box(QMessageBox::Icon::Critical, "error", "you must be at least SUPPLIER", QMessageBox::Ok, this);
+        box.exec();
+        return;
+    }
     RiflesWindow* window = new RiflesWindow(db, this);
     window->show();
 }
@@ -104,6 +143,11 @@ void WarDBWindow::on_rifles_clicked()
 
 void WarDBWindow::on_artilleries_clicked()
 {
+    if (!(role & SUPPLIER_ROLE)){
+        QMessageBox box(QMessageBox::Icon::Critical, "error", "you must be at least SUPPLIER", QMessageBox::Ok, this);
+        box.exec();
+        return;
+    }
     ArtilleriesWindow* window = new ArtilleriesWindow(db, this);
     window->show();
 }
@@ -111,6 +155,11 @@ void WarDBWindow::on_artilleries_clicked()
 
 void WarDBWindow::on_missile_weapons_clicked()
 {
+    if (!(role & SUPPLIER_ROLE)){
+        QMessageBox box(QMessageBox::Icon::Critical, "error", "you must be at least SUPPLIER", QMessageBox::Ok, this);
+        box.exec();
+        return;
+    }
     MissileWeaponsWindow* window = new MissileWeaponsWindow(db, this);
     window->show();
 }
@@ -118,6 +167,11 @@ void WarDBWindow::on_missile_weapons_clicked()
 
 void WarDBWindow::on_infantry_combat_vehicles_clicked()
 {
+    if (!(role & SUPPLIER_ROLE)){
+        QMessageBox box(QMessageBox::Icon::Critical, "error", "you must be at least SUPPLIER", QMessageBox::Ok, this);
+        box.exec();
+        return;
+    }
     InfantryCombatVehiclesWindow* window = new InfantryCombatVehiclesWindow(db, this);
     window->show();
 }
@@ -125,6 +179,11 @@ void WarDBWindow::on_infantry_combat_vehicles_clicked()
 
 void WarDBWindow::on_tanks_clicked()
 {
+    if (!(role & SUPPLIER_ROLE)){
+        QMessageBox box(QMessageBox::Icon::Critical, "error", "you must be at least SUPPLIER", QMessageBox::Ok, this);
+        box.exec();
+        return;
+    }
     TanksWindow* window = new TanksWindow(db, this);
     window->show();
 }
@@ -132,6 +191,11 @@ void WarDBWindow::on_tanks_clicked()
 
 void WarDBWindow::on_tracktors_clicked()
 {
+    if (!(role & SUPPLIER_ROLE)){
+        QMessageBox box(QMessageBox::Icon::Critical, "error", "you must be at least SUPPLIER", QMessageBox::Ok, this);
+        box.exec();
+        return;
+    }
     TractorsWindow* window = new TractorsWindow(db, this);
     window->show();
 }
@@ -139,6 +203,11 @@ void WarDBWindow::on_tracktors_clicked()
 
 void WarDBWindow::on_vehicles_clicked()
 {
+    if (!(role & SUPPLIER_ROLE)){
+        QMessageBox box(QMessageBox::Icon::Critical, "error", "you must be at least SUPPLIER", QMessageBox::Ok, this);
+        box.exec();
+        return;
+    }
     VehiclesWindow* window = new VehiclesWindow(db, this);
     window->show();
 }
@@ -146,6 +215,11 @@ void WarDBWindow::on_vehicles_clicked()
 
 void WarDBWindow::on_generals_clicked()
 {
+    if (!(role & HR_ROLE)){
+        QMessageBox box(QMessageBox::Icon::Critical, "error", "you must be at least HR", QMessageBox::Ok, this);
+        box.exec();
+        return;
+    }
     GeneralsWindow* window = new GeneralsWindow(db, this);
     window->show();
 }
@@ -153,6 +227,11 @@ void WarDBWindow::on_generals_clicked()
 
 void WarDBWindow::on_colonels_clicked()
 {
+    if (!(role & HR_ROLE)){
+        QMessageBox box(QMessageBox::Icon::Critical, "error", "you must be at least HR", QMessageBox::Ok, this);
+        box.exec();
+        return;
+    }
     ColonelsWindow* window = new ColonelsWindow(db, this);
     window->show();
 }
@@ -160,6 +239,11 @@ void WarDBWindow::on_colonels_clicked()
 
 void WarDBWindow::on_lieutenant_colonels_clicked()
 {
+    if (!(role & HR_ROLE)){
+        QMessageBox box(QMessageBox::Icon::Critical, "error", "you must be at least HR", QMessageBox::Ok, this);
+        box.exec();
+        return;
+    }
     LieutenantColonelsWindow* window = new LieutenantColonelsWindow(db, this);
     window->show();
 }
@@ -167,6 +251,11 @@ void WarDBWindow::on_lieutenant_colonels_clicked()
 
 void WarDBWindow::on_majors_clicked()
 {
+    if (!(role & HR_ROLE)){
+        QMessageBox box(QMessageBox::Icon::Critical, "error", "you must be at least HR", QMessageBox::Ok, this);
+        box.exec();
+        return;
+    }
     majorsWindow* window = new majorsWindow(db, this);
     window->show();
 }
@@ -174,6 +263,11 @@ void WarDBWindow::on_majors_clicked()
 
 void WarDBWindow::on_captains_clicked()
 {
+    if (!(role & HR_ROLE)){
+        QMessageBox box(QMessageBox::Icon::Critical, "error", "you must be at least HR", QMessageBox::Ok, this);
+        box.exec();
+        return;
+    }
     CaptainsWindow* window = new CaptainsWindow(db, this);
     window->show();
 }
@@ -181,6 +275,11 @@ void WarDBWindow::on_captains_clicked()
 
 void WarDBWindow::on_lieutenants_clicked()
 {
+    if (!(role & HR_ROLE)){
+        QMessageBox box(QMessageBox::Icon::Critical, "error", "you must be at least HR", QMessageBox::Ok, this);
+        box.exec();
+        return;
+    }
     CaptainsWindow* window = new CaptainsWindow(db, this);
     window->show();
 }
@@ -188,6 +287,11 @@ void WarDBWindow::on_lieutenants_clicked()
 
 void WarDBWindow::on_sergeantmajors_clicked()
 {
+    if (!(role & HR_ROLE)){
+        QMessageBox box(QMessageBox::Icon::Critical, "error", "you must be at least HR", QMessageBox::Ok, this);
+        box.exec();
+        return;
+    }
     SergeantmajorsWindow* window = new SergeantmajorsWindow(db, this);
     window->show();
 }
@@ -195,6 +299,11 @@ void WarDBWindow::on_sergeantmajors_clicked()
 
 void WarDBWindow::on_sergeants_clicked()
 {
+    if (!(role & HR_ROLE)){
+        QMessageBox box(QMessageBox::Icon::Critical, "error", "you must be at least HR", QMessageBox::Ok, this);
+        box.exec();
+        return;
+    }
     SergeantsWindow* window = new SergeantsWindow(db, this);
     window->show();
 }
@@ -202,6 +311,11 @@ void WarDBWindow::on_sergeants_clicked()
 
 void WarDBWindow::on_ensigns_clicked()
 {
+    if (!(role & HR_ROLE)){
+        QMessageBox box(QMessageBox::Icon::Critical, "error", "you must be at least HR", QMessageBox::Ok, this);
+        box.exec();
+        return;
+    }
     EnsignsWindow* window = new EnsignsWindow(db, this);
     window->show();
 }
@@ -209,6 +323,11 @@ void WarDBWindow::on_ensigns_clicked()
 
 void WarDBWindow::on_corporals_clicked()
 {
+    if (!(role & HR_ROLE)){
+        QMessageBox box(QMessageBox::Icon::Critical, "error", "you must be at least HR", QMessageBox::Ok, this);
+        box.exec();
+        return;
+    }
     CorporalsWindow* window = new CorporalsWindow(db, this);
     window->show();
 }
@@ -216,6 +335,11 @@ void WarDBWindow::on_corporals_clicked()
 
 void WarDBWindow::on_pushButton_9_clicked()
 {
+    if (!(role & HR_ROLE)){
+        QMessageBox box(QMessageBox::Icon::Critical, "error", "you must be at least HR", QMessageBox::Ok, this);
+        box.exec();
+        return;
+    }
     SoldiersWindow* window = new SoldiersWindow(db, this);
     window->show();
 }
@@ -223,6 +347,11 @@ void WarDBWindow::on_pushButton_9_clicked()
 
 void WarDBWindow::on_army_clicked()
 {
+    if (!(role == ADMIN_ROLE)){
+        QMessageBox box(QMessageBox::Icon::Critical, "error", "you must ADMIN", QMessageBox::Ok, this);
+        box.exec();
+        return;
+    }
     ArrmyWindow* window = new ArrmyWindow(db, this);
     window->show();
 }
@@ -230,6 +359,11 @@ void WarDBWindow::on_army_clicked()
 
 void WarDBWindow::on_corp_clicked()
 {
+    if (!(role == ADMIN_ROLE)){
+        QMessageBox box(QMessageBox::Icon::Critical, "error", "you must ADMIN", QMessageBox::Ok, this);
+        box.exec();
+        return;
+    }
     CorpWindow* window = new CorpWindow(db, this);
     window->show();
 }
@@ -237,6 +371,11 @@ void WarDBWindow::on_corp_clicked()
 
 void WarDBWindow::on_division_clicked()
 {
+    if (!(role == ADMIN_ROLE)){
+        QMessageBox box(QMessageBox::Icon::Critical, "error", "you must ADMIN", QMessageBox::Ok, this);
+        box.exec();
+        return;
+    }
     divisionWindow* window = new divisionWindow(db, this);
     window->show();
 }
@@ -244,6 +383,11 @@ void WarDBWindow::on_division_clicked()
 
 void WarDBWindow::on_unit_clicked()
 {
+    if (!(role == ADMIN_ROLE)){
+        QMessageBox box(QMessageBox::Icon::Critical, "error", "you must ADMIN", QMessageBox::Ok, this);
+        box.exec();
+        return;
+    }
     MilitaryUnitWindow* window = new MilitaryUnitWindow(db, this);
     window->show();
 }
@@ -251,6 +395,11 @@ void WarDBWindow::on_unit_clicked()
 
 void WarDBWindow::on_company_clicked()
 {
+    if (!(role == ADMIN_ROLE)){
+        QMessageBox box(QMessageBox::Icon::Critical, "error", "you must ADMIN", QMessageBox::Ok, this);
+        box.exec();
+        return;
+    }
     CompanyWindow* window = new CompanyWindow(db, this);
     window->show();
 }
@@ -258,6 +407,11 @@ void WarDBWindow::on_company_clicked()
 
 void WarDBWindow::on_pushButton_3_clicked()
 {
+    if (!(role == ADMIN_ROLE)){
+        QMessageBox box(QMessageBox::Icon::Critical, "error", "you must ADMIN", QMessageBox::Ok, this);
+        box.exec();
+        return;
+    }
     PlatoonWindow* window = new PlatoonWindow(db, this);
     window->show();
 }
@@ -265,6 +419,11 @@ void WarDBWindow::on_pushButton_3_clicked()
 
 void WarDBWindow::on_squad_clicked()
 {
+    if (!(role == ADMIN_ROLE)){
+        QMessageBox box(QMessageBox::Icon::Critical, "error", "you must ADMIN", QMessageBox::Ok, this);
+        box.exec();
+        return;
+    }
     SquadWindow* window = new SquadWindow(db, this);
     window->show();
 }
@@ -272,6 +431,11 @@ void WarDBWindow::on_squad_clicked()
 
 void WarDBWindow::on_brigade_clicked()
 {
+    if (!(role == ADMIN_ROLE)){
+        QMessageBox box(QMessageBox::Icon::Critical, "error", "you must ADMIN", QMessageBox::Ok, this);
+        box.exec();
+        return;
+    }
     BrigadeWindow* window = new BrigadeWindow(db, this);
     window->show();
 }
@@ -283,6 +447,7 @@ void showReport(QSqlQuery& q){
     model->setQuery(q);
     QTableView *view = new QTableView;
     view->setModel(model);
+    view->setWindowTitle("report data");
     view->show();
 }
 
@@ -295,6 +460,7 @@ bool makeRegionRequest(QVariant& res, QSqlDatabase* db){
     box->setModel(t);
     box->setModelColumn(0);
     InsertDialog dialog({{"region", box}});
+    dialog.setWindowTitle("choose report parameters");
     int dialog_res = dialog.exec();
     if (dialog_res == QDialog::Accepted){
         res = t->data(t->index(box->currentIndex(), 1), Qt::EditRole);
@@ -346,6 +512,26 @@ bool makeUnitRequest(QVariant& res, QSqlDatabase* db){
     box->setModel(t);
     box->setModelColumn(1);
     InsertDialog dialog({{"unit", box}});
+    int dialog_res = dialog.exec();
+    if (dialog_res == QDialog::Accepted){
+        res = t->data(t->index(box->currentIndex(), 0), Qt::EditRole);
+        return true;
+    }
+    return false;
+}
+
+
+bool makeRankRequest(QVariant& res, QSqlDatabase* db, bool is_oficier){
+    QSqlQueryModel*  t= new QSqlQueryModel(nullptr);
+    if (is_oficier){
+        t->setQuery("select * from employee_ranks where id > 7", *db);
+    } else {
+        t->setQuery("select * from employee_ranks where id <= 7", *db);
+    }
+    QComboBox* box = new QComboBox(nullptr);
+    box->setModel(t);
+    box->setModelColumn(1);
+    InsertDialog dialog({{"rank", box}});
     int dialog_res = dialog.exec();
     if (dialog_res == QDialog::Accepted){
         res = t->data(t->index(box->currentIndex(), 0), Qt::EditRole);
@@ -444,11 +630,16 @@ void WarDBWindow::on_report_2_2_clicked()
                                         " INNER JOIN  employee_ranks ON employees.rank = employee_ranks.id " \
                                         " LEFT JOIN public.military_subdivisions ms on ms.id = employees.work " \
                                         " LEFT JOIN public.military_subdivisions ms1 on ms1.id = employees.head " \
-                      " WHERE employees.rank < 7";
+                      " WHERE employees.rank = ?";
     q.prepare(s);
     QVariant region_id;
+    QVariant rank_id;
+    if (!makeRankRequest(rank_id, db, true)){
+        return;
+    }
     if (makeRegionRequest(region_id, db)){
         q.addBindValue(region_id);
+        q.addBindValue(rank_id);
         q.exec();
         showReport(q);
     }
@@ -471,12 +662,17 @@ void WarDBWindow::on_report_2_3_clicked()
                                         "INNER JOIN  employee_ranks ON employees.rank = employee_ranks.id " \
                                         "LEFT JOIN public.military_subdivisions ms on ms.id = employees.work " \
                                         "LEFT JOIN public.military_subdivisions ms1 on ms1.id = employees.head " \
-                                        "WHERE employees.rank >= 7";
+                                        "WHERE employees.rank = ?";
 
     q.prepare(s);
     QVariant army_id;
+    QVariant rank_id;
+    if (!makeRankRequest(rank_id, db, true)){
+        return;
+    }
     if (makeArmyRequest(army_id, db)){
         q.addBindValue(army_id);
+        q.addBindValue(rank_id);
         q.exec();
         showReport(q);
     }
@@ -500,12 +696,17 @@ void WarDBWindow::on_report_2_4_clicked()
                                         " INNER JOIN  employee_ranks ON employees.rank = employee_ranks.id " \
                                         " LEFT JOIN public.military_subdivisions ms on ms.id = employees.work " \
                                         " LEFT JOIN public.military_subdivisions ms1 on ms1.id = employees.head " \
-                      " WHERE employees.rank < 7";
+                      " WHERE employees.rank = ?";
 
     q.prepare(s);
     QVariant underArmy_id;
+    QVariant rank_id;
+    if (!makeRankRequest(rank_id, db, true)){
+        return;
+    }
     if (makeUnderArmyRequest(underArmy_id, db)){
         q.addBindValue(underArmy_id);
+        q.addBindValue(rank_id);
         q.exec();
         showReport(q);
     }
@@ -526,12 +727,17 @@ void WarDBWindow::on_report_2_5_clicked()
                                         " INNER JOIN  employee_ranks ON employees.rank = employee_ranks.id " \
                                         " LEFT JOIN public.military_subdivisions ms on ms.id = employees.work " \
                                         " LEFT JOIN public.military_subdivisions ms1 on ms1.id = employees.head " \
-                      " WHERE employees.rank < 7 ";
+                      " WHERE employees.rank = ? ";
 
     q.prepare(s);
     QVariant unit_id;
+    QVariant rank_id;
+    if (!makeRankRequest(rank_id, db, true)){
+        return;
+    }
     if (makeUnitRequest(unit_id, db)){
         q.addBindValue(unit_id);
+        q.addBindValue(rank_id);
         q.exec();
         showReport(q);
     }
@@ -565,11 +771,16 @@ void WarDBWindow::on_report_3_2_clicked()
                                         " INNER JOIN  employee_ranks ON employees.rank = employee_ranks.id " \
                                         " LEFT JOIN public.military_subdivisions ms on ms.id = employees.work " \
                                         " LEFT JOIN public.military_subdivisions ms1 on ms1.id = employees.head " \
-                      " WHERE employees.rank >= 7";
+                      " WHERE employees.rank = ?";
     q.prepare(s);
     QVariant region_id;
+    QVariant rank_id;
+    if (!makeRankRequest(rank_id, db, false)){
+        return;
+    }
     if (makeRegionRequest(region_id, db)){
         q.addBindValue(region_id);
+        q.addBindValue(rank_id);
         q.exec();
         showReport(q);
     }
@@ -592,12 +803,17 @@ void WarDBWindow::on_report_3_3_clicked()
                                         "INNER JOIN  employee_ranks ON employees.rank = employee_ranks.id " \
                                         "LEFT JOIN public.military_subdivisions ms on ms.id = employees.work " \
                                         "LEFT JOIN public.military_subdivisions ms1 on ms1.id = employees.head " \
-                                        "WHERE employees.rank >= 7";
+                                        "WHERE employees.rank = ?";
 
     q.prepare(s);
     QVariant army_id;
+    QVariant rank_id;
+    if (!makeRankRequest(rank_id, db, false)){
+        return;
+    }
     if (makeArmyRequest(army_id, db)){
         q.addBindValue(army_id);
+        q.addBindValue(rank_id);
         q.exec();
         showReport(q);
     }
@@ -619,12 +835,17 @@ void WarDBWindow::on_report_3_4_clicked()
                                         " INNER JOIN  employee_ranks ON employees.rank = employee_ranks.id " \
                                         " LEFT JOIN public.military_subdivisions ms on ms.id = employees.work " \
                                         " LEFT JOIN public.military_subdivisions ms1 on ms1.id = employees.head " \
-                      " WHERE employees.rank >= 7";
+                      " WHERE employees.rank = ?";
 
     q.prepare(s);
     QVariant underArmy_id;
+    QVariant rank_id;
+    if (!makeRankRequest(rank_id, db, false)){
+        return;
+    }
     if (makeUnderArmyRequest(underArmy_id, db)){
         q.addBindValue(underArmy_id);
+        q.addBindValue(rank_id);
         q.exec();
         showReport(q);
     }
@@ -645,12 +866,17 @@ void WarDBWindow::on_report_3_5_clicked()
                                         " INNER JOIN  employee_ranks ON employees.rank = employee_ranks.id " \
                                         " LEFT JOIN public.military_subdivisions ms on ms.id = employees.work " \
                                         " LEFT JOIN public.military_subdivisions ms1 on ms1.id = employees.head " \
-                      " WHERE employees.rank >= 7 ";
+                      " WHERE employees.rank = ? ";
 
     q.prepare(s);
     QVariant unit_id;
+    QVariant rank_id;
+    if (!makeRankRequest(rank_id, db, false)){
+        return;
+    }
     if (makeUnitRequest(unit_id, db)){
         q.addBindValue(unit_id);
+        q.addBindValue(rank_id);
         q.exec();
         showReport(q);
     }
@@ -1139,7 +1365,7 @@ bool makeSpecRequest(QVariant& res, QSqlDatabase* db){
     QComboBox* box = new QComboBox(nullptr);
     box->setModel(t);
     box->setModelColumn(1);
-    InsertDialog dialog({{"employee", box}});
+    InsertDialog dialog({{"spec", box}});
     int dialog_res = dialog.exec();
     if (dialog_res == QDialog::Accepted){
         res = t->data(t->index(box->currentIndex(), 0), Qt::EditRole);
@@ -1149,4 +1375,281 @@ bool makeSpecRequest(QVariant& res, QSqlDatabase* db){
 }
 
 
+
+
+void WarDBWindow::on_report_11_1_clicked()
+{
+    QSqlQuery q(*db);
+    QString s = " WITH " \
+            " region_units as (SELECT military_unit.id as id from military_unit INNER JOIN places ON military_unit.place_id = places.id " \
+        " WHERE places.region_id = ?), " \
+            " specific_companies as (SELECT ms.id as id FROM region_units INNER JOIN military_subdivisions ms ON ms.part_of = region_units.id), " \
+            " specific_platoons as (SELECT ms.id as id FROM specific_companies INNER JOIN military_subdivisions ms ON ms.part_of = specific_companies.id), " \
+            " specific_squads as (SELECT ms.id as id FROM specific_platoons INNER JOIN military_subdivisions ms ON ms.part_of = specific_platoons.id), " \
+            " subdivisions as (SELECT id from region_units UNION SELECT id FROM specific_companies UNION SELECT id FROM specific_platoons UNION SELECT  id FROM specific_squads) " \
+            " SELECT employees.name from subdivisions INNER JOIN employees on employees.work = subdivisions.id " \
+                " INNER JOIN employees_specializations es on employees.id = es.employee_id " \
+            " WHERE es.spec_id = ?";
+    q.prepare(s);
+    QVariant region_id;
+    QVariant spec_id;
+    if (!makeSpecRequest(spec_id, db)){
+        return;
+    }
+    if (makeRegionRequest(region_id, db)){
+        q.addBindValue(region_id);
+        q.addBindValue(spec_id);
+        q.exec();
+        showReport(q);
+    }
+}
+
+
+void WarDBWindow::on_report_11_2_clicked()
+{
+    QSqlQuery q(*db);
+    QString s = "WITH specific_under_army as (SELECT ms.id FROM military_subdivisions ms WHERE ms.id = ?), " \
+            " specific_units as (SELECT ms.id FROM specific_under_army INNER JOIN military_subdivisions ms ON specific_under_army.id = ms.part_of), " \
+            " specific_companies as (SELECT ms.id as id FROM specific_units INNER JOIN military_subdivisions ms ON ms.part_of = specific_units.id), " \
+            " specific_platoons as (SELECT ms.id as id FROM specific_companies INNER JOIN military_subdivisions ms ON ms.part_of = specific_companies.id), " \
+            " specific_squads as (SELECT ms.id as id FROM specific_platoons INNER JOIN military_subdivisions ms ON ms.part_of = specific_platoons.id), " \
+            " subdivisions as (SELECT id FROM specific_companies UNION SELECT id FROM specific_platoons UNION SELECT id FROM specific_squads " \
+            " UNION SELECT id FROM specific_under_army UNION SELECT id FROM specific_units) " \
+            " SELECT employees.name from subdivisions INNER JOIN employees on employees.work = subdivisions.id " \
+                " INNER JOIN employees_specializations es on employees.id = es.employee_id " \
+            " WHERE es.spec_id = ? ";
+
+    q.prepare(s);
+    QVariant Army_id;
+    QVariant spec_id;
+    if (!makeSpecRequest(spec_id, db)){
+        return;
+    }
+    if (makeArmyRequest(Army_id, db)){
+        q.addBindValue(Army_id);
+        q.addBindValue(spec_id);
+        q.exec();
+        showReport(q);
+    }
+}
+
+
+void WarDBWindow::on_report_11_3_clicked()
+{
+    QSqlQuery q(*db);
+    QString s = "WITH specific_under_army as (SELECT ms.id FROM military_subdivisions ms WHERE ms.id = ?), " \
+            " specific_units as (SELECT ms.id FROM specific_under_army INNER JOIN military_subdivisions ms ON specific_under_army.id = ms.part_of), " \
+            " specific_companies as (SELECT ms.id as id FROM specific_units INNER JOIN military_subdivisions ms ON ms.part_of = specific_units.id), " \
+            " specific_platoons as (SELECT ms.id as id FROM specific_companies INNER JOIN military_subdivisions ms ON ms.part_of = specific_companies.id), " \
+            " specific_squads as (SELECT ms.id as id FROM specific_platoons INNER JOIN military_subdivisions ms ON ms.part_of = specific_platoons.id), " \
+            " subdivisions as (SELECT id FROM specific_companies UNION SELECT id FROM specific_platoons UNION SELECT  id FROM specific_squads) " \
+            " SELECT employees.name from subdivisions INNER JOIN employees on employees.work = subdivisions.id " \
+                " INNER JOIN employees_specializations es on employees.id = es.employee_id " \
+            " WHERE es.spec_id = ?";
+
+    q.prepare(s);
+    QVariant underArmy_id;
+    QVariant spec_id;
+    if (!makeSpecRequest(spec_id, db)){
+        return;
+    }
+    if (makeUnderArmyRequest(underArmy_id, db)){
+        q.addBindValue(underArmy_id);
+        q.addBindValue(spec_id);
+        q.exec();
+        showReport(q);
+    }
+}
+
+
+void WarDBWindow::on_report_11_4_clicked()
+{
+    QSqlQuery q(*db);
+    QString s = " WITH specific_units as (SELECT ms.id FROM  military_subdivisions ms WHERE id = ?), " \
+            " specific_companies as (SELECT ms.id as id FROM specific_units INNER JOIN military_subdivisions ms ON ms.part_of = specific_units.id), " \
+            " specific_platoons as (SELECT ms.id as id FROM specific_companies INNER JOIN military_subdivisions ms ON ms.part_of = specific_companies.id), " \
+            " specific_squads as (SELECT ms.id as id FROM specific_platoons INNER JOIN military_subdivisions ms ON ms.part_of = specific_platoons.id), " \
+            " subdivisions as (SELECT id FROM specific_companies UNION SELECT id FROM specific_platoons UNION SELECT  id FROM specific_squads) " \
+            " SELECT employees.name from subdivisions INNER JOIN employees on employees.work = subdivisions.id " \
+                " INNER JOIN employees_specializations es on employees.id = es.employee_id " \
+            " WHERE es.spec_id = ?";
+
+    q.prepare(s);
+    QVariant unit_id;
+    QVariant spec_id;
+    if (!makeSpecRequest(spec_id, db)){
+        return;
+    }
+    if (makeUnitRequest(unit_id, db)){
+        q.addBindValue(unit_id);
+        q.addBindValue(spec_id);
+        q.exec();
+        showReport(q);
+    }
+}
+
+
+bool makeWeaponTypeRequest(QVariant& res, QSqlDatabase* db){
+    QSqlTableModel*  t= new QSqlTableModel(nullptr, *db);
+    t->setTable("weapon_types");
+    t->select();
+    QComboBox* box = new QComboBox(nullptr);
+    box->setModel(t);
+    box->setModelColumn(1);
+    InsertDialog dialog({{"weapon type", box}});
+    int dialog_res = dialog.exec();
+    if (dialog_res == QDialog::Accepted){
+        res = t->data(t->index(box->currentIndex(), 0), Qt::EditRole);
+        return true;
+    }
+    return false;
+}
+
+
+void WarDBWindow::on_report_12_1_clicked()
+{
+    QSqlQuery q(*db);
+    QString s = " SELECT military_subdivisions.name, unit_weapons.weapon_id, unit_weapons.amount from unit_weapons RIGHT JOIN military_unit on unit_weapons.unit_id = military_unit.id " \
+            " INNER JOIN weapons on unit_weapons.weapon_id = weapons.id " \
+            " INNER JOIN military_subdivisions on military_unit.id = military_subdivisions.id " \
+        " WHERE weapons.type = ? AND unit_weapons.amount > 10";
+
+    q.prepare(s);
+    QVariant weaponType;
+    if (makeWeaponTypeRequest(weaponType, db)){
+        q.addBindValue(weaponType);
+        q.exec();
+        showReport(q);
+    }
+}
+
+
+void WarDBWindow::on_report_12_2_clicked()
+{
+    QSqlQuery q(*db);
+    QString s = " SELECT military_subdivisions.name, unit_weapons.weapon_id, unit_weapons.amount from unit_weapons RIGHT JOIN military_unit on unit_weapons.unit_id = military_unit.id " \
+            " INNER JOIN weapons on unit_weapons.weapon_id = weapons.id " \
+            " INNER JOIN military_subdivisions on military_unit.id = military_subdivisions.id " \
+        " WHERE weapons.type = ? AND unit_weapons.amount = 0";
+
+    q.prepare(s);
+    QVariant weaponType;
+    if (makeWeaponTypeRequest(weaponType, db)){
+        q.addBindValue(weaponType);
+        q.exec();
+        showReport(q);
+    }
+}
+
+
+bool makeShooseValue(QVariant& res, QSqlDatabase* db, const QString& text){
+
+    QCheckBox* box = new QCheckBox;
+    InsertDialog dialog({{text, box}});
+    int dialog_res = dialog.exec();
+    if (dialog_res == QDialog::Accepted){
+        res = box->isChecked();
+        return true;
+    }
+    return false;
+}
+
+
+void WarDBWindow::on_report_13_1_clicked()
+{
+     QSqlQuery q(*db);
+     QString s = " WITH specific_army as (SELECT id from military_subdivisions WHERE military_subdivisions.type = 1), " \
+             " specific_under_army as (SELECT ms.id, specific_army.id as army FROM specific_army INNER JOIN  military_subdivisions ms ON specific_army.id = ms.part_of), " \
+             " specific_units as (SELECT count(ms.id), army FROM specific_under_army INNER JOIN military_subdivisions ms ON specific_under_army.id = ms.part_of group by army), " \
+             " army_units as ( SELECT specific_units.army as army, specific_units.count as number_of_units FROM specific_units INNER JOIN military_subdivisions on military_subdivisions.id = specific_units.army)  " \
+         " SELECT name, number_of_units FROM army_units INNER JOIN military_subdivisions on army_units.army = military_subdivisions.id  " \
+                   " WHERE army_units.number_of_units = (SELECT %1(number_of_units) from army_units)";
+     QVariant v;
+     if (makeShooseValue(v, db, "is_max")){
+         if (v.toBool()){
+             s = s.arg("max");
+         } else{
+             s = s.arg("min");
+         }
+         q.prepare(s);
+         q.exec();
+         showReport(q);
+
+     }
+}
+
+
+void WarDBWindow::on_report_13_2_clicked()
+{
+    QSqlQuery q(*db);
+    QString s = " WITH specific_under_army as (SELECT ms.id FROM  military_subdivisions ms WHERE type = 2), " \
+            " specific_units as (SELECT count(ms.id), specific_under_army.id as under_army FROM specific_under_army INNER JOIN military_subdivisions ms ON specific_under_army.id = ms.part_of "\
+              " group by specific_under_army.id), " \
+            "army_units as ( SELECT specific_units.under_army as under_army, specific_units.count as number_of_units FROM specific_units INNER JOIN military_subdivisions on military_subdivisions.id = specific_units.under_army) "\
+        " SELECT name, number_of_units FROM army_units INNER JOIN military_subdivisions on army_units.under_army = military_subdivisions.id "\
+                  " WHERE army_units.number_of_units = (SELECT %1(number_of_units) from army_units)";
+
+    QVariant v;
+    if (makeShooseValue(v, db, "is_max")){
+        if (v.toBool()){
+            s = s.arg("max");
+        } else{
+            s = s.arg("min");
+        }
+        q.prepare(s);
+        q.exec();
+        showReport(q);
+
+    }
+}
+
+
+void WarDBWindow::on_report_13_3_clicked()
+{
+    QSqlQuery q(*db);
+    QString s = " WITH specific_under_army as (SELECT ms.id FROM  military_subdivisions ms WHERE type = 3), " \
+            " specific_units as (SELECT count(ms.id), specific_under_army.id as under_army FROM specific_under_army INNER JOIN military_subdivisions ms ON specific_under_army.id = ms.part_of "\
+              " group by specific_under_army.id), " \
+            "army_units as ( SELECT specific_units.under_army as under_army, specific_units.count as number_of_units FROM specific_units INNER JOIN military_subdivisions on military_subdivisions.id = specific_units.under_army) "\
+        " SELECT name, number_of_units FROM army_units INNER JOIN military_subdivisions on army_units.under_army = military_subdivisions.id "\
+                  " WHERE army_units.number_of_units = (SELECT %1(number_of_units) from army_units)";
+
+    QVariant v;
+    if (makeShooseValue(v, db, "is_max")){
+        if (v.toBool()){
+            s = s.arg("max");
+        } else{
+            s = s.arg("min");
+        }
+        q.prepare(s);
+        q.exec();
+        showReport(q);
+
+    }
+}
+
+
+void WarDBWindow::on_report_13_4_clicked()
+{
+    QSqlQuery q(*db);
+    QString s = " WITH specific_under_army as (SELECT ms.id FROM  military_subdivisions ms WHERE type = 4), " \
+            " specific_units as (SELECT count(ms.id), specific_under_army.id as under_army FROM specific_under_army INNER JOIN military_subdivisions ms ON specific_under_army.id = ms.part_of "\
+              " group by specific_under_army.id), " \
+            "army_units as ( SELECT specific_units.under_army as under_army, specific_units.count as number_of_units FROM specific_units INNER JOIN military_subdivisions on military_subdivisions.id = specific_units.under_army) "\
+        " SELECT name, number_of_units FROM army_units INNER JOIN military_subdivisions on army_units.under_army = military_subdivisions.id "\
+                  " WHERE army_units.number_of_units = (SELECT %1(number_of_units) from army_units)";
+
+    QVariant v;
+    if (makeShooseValue(v, db, "is_max")){
+        if (v.toBool()){
+            s = s.arg("max");
+        } else{
+            s = s.arg("min");
+        }
+        q.prepare(s);
+        q.exec();
+        showReport(q);
+
+    }
+}
 

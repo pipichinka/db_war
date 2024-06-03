@@ -10,27 +10,37 @@
 #include "insertdialog.h"
 #include <QSqlRelationalDelegate>
 #include <QDateEdit>
+#include "sqlrelationaltablemodelcustom.h"
 majorsWindow::majorsWindow(QSqlDatabase* db, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::majorsWindow),
-    model(new QSqlRelationalTableModel(this, *db))
+    model(nullptr)
 {
+    std::vector<ChangeCol> changeCols;
+    changeCols.push_back(ChangeCol(2, 1, 0, "work"));
+    changeCols.push_back(ChangeCol(3, 1, 0, "head"));
+    model = new SqlRelationalTableModelCustom(this, db, changeCols);
     ui->setupUi(this);
     model->setTable("majors_view");
-    model->setRelation(3, QSqlRelation("military_subdivisions", "id", "name"));
     model->setRelation(2, QSqlRelation("military_subdivisions", "id", "name"));
+    model->setRelation(3, QSqlRelation("military_subdivisions", "id", "name"));
     model->setJoinMode(QSqlRelationalTableModel::LeftJoin);
     model->setHeaderData(0, Qt::Horizontal, QObject::tr("id"));
     model->setHeaderData(1, Qt::Horizontal, QObject::tr("name"));
     model->setHeaderData(2, Qt::Horizontal, QObject::tr("work"));
     model->setHeaderData(3, Qt::Horizontal, QObject::tr("head"));
-    model->setHeaderData(3, Qt::Horizontal, QObject::tr("weight"));
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("weight"));
     model->select();
     model->setEditStrategy(QSqlTableModel::OnFieldChange);
     ui->tableView->setModel(model);
     ui->tableView->setItemDelegate(new QSqlRelationalDelegate(ui->tableView));
     ui->tableView->hideColumn(0);
 }
+
+void majorsWindow::beforeUpdate(int row, QSqlRecord& record){
+    std::cout <<row << std::endl;
+}
+
 
 majorsWindow::~majorsWindow()
 {

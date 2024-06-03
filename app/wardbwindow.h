@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QSqlDatabase>
+#include "roles.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class WarDBWindow; }
 QT_END_NAMESPACE
@@ -12,7 +13,7 @@ class WarDBWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    WarDBWindow(QSqlDatabase* db, QWidget *parent = nullptr);
+    WarDBWindow(QSqlDatabase* db, app_roles role, QWidget *parent = nullptr);
     ~WarDBWindow();
 
 private slots:
@@ -150,8 +151,29 @@ private slots:
 
     void on_report_10_4_clicked();
 
+    void on_report_11_1_clicked();
+
+    void on_report_11_2_clicked();
+
+    void on_report_11_3_clicked();
+
+    void on_report_11_4_clicked();
+
+    void on_report_12_1_clicked();
+
+    void on_report_12_2_clicked();
+
+    void on_report_13_1_clicked();
+
+    void on_report_13_2_clicked();
+
+    void on_report_13_3_clicked();
+
+    void on_report_13_4_clicked();
+
 private:
     Ui::WarDBWindow *ui;
     QSqlDatabase* db;
+    app_roles role;
 };
 #endif // WARDBWINDOW_H

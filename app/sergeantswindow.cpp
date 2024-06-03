@@ -24,7 +24,7 @@ SergeantsWindow::SergeantsWindow(QSqlDatabase* db, QWidget *parent) :
     model->setHeaderData(1, Qt::Horizontal, QObject::tr("name"));
     model->setHeaderData(2, Qt::Horizontal, QObject::tr("work"));
     model->setHeaderData(3, Qt::Horizontal, QObject::tr("head"));
-    model->setHeaderData(3, Qt::Horizontal, QObject::tr("weight"));
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("weight"));
     model->select();
     model->setEditStrategy(QSqlTableModel::OnFieldChange);
     ui->tableView->setModel(model);
@@ -62,6 +62,7 @@ void SergeantsWindow::on_buttonAdd_clicked()
     form.push_back(QPair<QString, QWidget*>("head", headEdit));
     form.push_back(QPair<QString, QWidget*>("weight", weightLine));
     InsertDialog dialog(form, this);
+    dialog.setWindowTitle("insertForm");
     int res = dialog.exec();
     if (res != QDialog::DialogCode::Accepted){
         return;

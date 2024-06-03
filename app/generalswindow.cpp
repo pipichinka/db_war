@@ -19,12 +19,12 @@ GeneralsWindow::GeneralsWindow(QSqlDatabase* db, QWidget *parent) :
     model->setTable("generals_view");
     model->setRelation(3, QSqlRelation("military_subdivisions", "id", "name"));
     model->setRelation(2, QSqlRelation("military_subdivisions", "id", "name"));
-    model->setJoinMode(QSqlRelationalTableModel::LeftJoin);
+    model->setJoinMode(QSqlRelationalTableModel::InnerJoin);
     model->setHeaderData(0, Qt::Horizontal, QObject::tr("id"));
     model->setHeaderData(1, Qt::Horizontal, QObject::tr("name"));
     model->setHeaderData(2, Qt::Horizontal, QObject::tr("work"));
     model->setHeaderData(3, Qt::Horizontal, QObject::tr("head"));
-    model->setHeaderData(3, Qt::Horizontal, QObject::tr("hire_date"));
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("hire_date"));
     model->select();
     model->setEditStrategy(QSqlTableModel::OnFieldChange);
     ui->tableView->setModel(model);

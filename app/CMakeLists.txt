@@ -60,6 +60,8 @@ set(PROJECT_SOURCES
         companywindow.h companywindow.cpp companywindow.ui
         platoonwindow.h platoonwindow.cpp platoonwindow.ui
         squadwindow.h squadwindow.cpp squadwindow.ui
+        roles.h
+        sqlrelationaltablemodelcustom.h sqlrelationaltablemodelcustom.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

@@ -24,7 +24,7 @@ LieutenantColonelsWindow::LieutenantColonelsWindow(QSqlDatabase* db, QWidget *pa
     model->setHeaderData(1, Qt::Horizontal, QObject::tr("name"));
     model->setHeaderData(2, Qt::Horizontal, QObject::tr("work"));
     model->setHeaderData(3, Qt::Horizontal, QObject::tr("head"));
-    model->setHeaderData(3, Qt::Horizontal, QObject::tr("height"));
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("height"));
     model->select();
     model->setEditStrategy(QSqlTableModel::OnFieldChange);
     ui->tableView->setModel(model);

@@ -10,6 +10,9 @@
 #include <QSqlRelationalTableModel>
 #include <QSqlRelation>
 #include <QSqlRelationalDelegate>
+#include "insertdialog.h"
+#include <QLineEdit>
+#include <QMessageBox>
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -21,33 +24,37 @@ int main(int argc, char *argv[])
 
     if (!db.open()) {
         qDebug() << "Error: connection with database fail";
+        QMessageBox box(QMessageBox::Icon::Critical, "error", "no connection to data base", QMessageBox::Ok, nullptr);
+        box.exec();
+        return 1;
     } else {
         qDebug() << "Database: connection ok";
     }
-    WarDBWindow w(&db, nullptr);
+    std::vector<QPair<QString, QWidget*>> form;
+    QLineEdit* nameLine = new QLineEdit;
+    QLineEdit* passwordLine = new QLineEdit;
+    passwordLine->setEchoMode(QLineEdit::Password);
+    form.push_back(QPair<QString, QWidget*>("name", nameLine));
+    form.push_back(QPair<QString, QWidget*>("password", passwordLine));
+    InsertDialog dialog(form, nullptr);
+    dialog.setWindowTitle("login window");
+    int res = dialog.exec();
+    if (res != QDialog::DialogCode::Accepted){
+        return 1;;
+    }
+    int role = -1;
+    if (nameLine->text() == "admin" && passwordLine->text() == "1234"){
+        role = ADMIN_ROLE;
+    } else if (nameLine->text() == "hr" && passwordLine->text() == "1234"){
+        role = HR_ROLE;
+    } else if (nameLine->text() == "supplier" && passwordLine->text() == "1234"){
+        role = SUPPLIER_ROLE;
+    } else {
+        QMessageBox box(QMessageBox::Icon::Critical, "error", "invalid login or password", QMessageBox::Ok, nullptr);
+        box.exec();
+        return 1;
+    }
+    WarDBWindow w(&db, (app_roles) role, nullptr);
     w.show();
-//        QSqlRelationalTableModel *model = new QSqlRelationalTableModel(nullptr, db);
-//           model->setTable("unit_weapons");
-//           model->setRelation(1, QSqlRelation("employee_ranks", "id", "name"));
-
-//           model->setRelation(1, QSqlRelation("military_subdivisions", "unit_id", "name"));
-//           model->setJoinMode(QSqlRelationalTableModel::LeftJoin);
-//           model->setHeaderData(0, Qt::Horizontal, QObject::tr("unit"));
-//           model->setHeaderData(1, Qt::Horizontal, QObject::tr("weapon"));
-//           model->setHeaderData(2, Qt::Horizontal, QObject::tr("work"));
-//           model->setHeaderData(3, Qt::Horizontal, QObject::tr("name"));
-//           model->setHeaderData(4, Qt::Horizontal, QObject::tr("head"));
-//           model->sort(0, Qt::SortOrder::DescendingOrder);
-//           model->setEditStrategy(QSqlTableModel::OnFieldChange);
-//           QTableView *view = new QTableView;
-//           view->setModel(model);
-//           //view->hideColumn(0); // don't show the ID
-//           view->setItemDelegate(new QSqlRelationalDelegate(view));
-//           view->show();
-//           model->select();
-//           QSqlQuery q = db.exec("INSERT INTO \"employees\"(\"rank\", \"work\", \"name\", \"head\") VALUES(1, 1, 'Alexander Alexandrovich Ivanov', 1);");
-//           model->select();
-//           model->removeRow(0);
-//           model->select();
     return a.exec();
 }

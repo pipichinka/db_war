@@ -8,7 +8,7 @@ WHERE places.region_id = 2),
     INNER JOIN region_units on region_units.id = unit_transport.unit_id
     INNER JOIN transport on unit_transport.transport_id = transport.id
 GROUP BY transport_id)
-SELECT transport_id, t.sum as total_amout, transport_types.name as type FROM t INNER JOIN transport on t.transport_id = transport.id
+SELECT transport.name as transport, t.sum as total_amout, transport_types.name as type FROM t INNER JOIN transport on t.transport_id = transport.id
         INNER JOIN transport_types on transport.type = transport_types.id;
 
 -- для армии
@@ -20,7 +20,7 @@ WITH
     INNER JOIN specific_units on specific_units.id = unit_transport.unit_id
     INNER JOIN transport on unit_transport.transport_id = transport.id
 GROUP BY transport_id)
-SELECT transport_id, t.sum as total_amout, transport_types.name as type FROM t INNER JOIN transport on t.transport_id = transport.id
+SELECT transport.name as transport, t.sum as total_amout, transport_types.name as type FROM t INNER JOIN transport on t.transport_id = transport.id
         INNER JOIN transport_types on transport.type = transport_types.id;
 
 -- для под армии
@@ -30,7 +30,7 @@ WITH    specific_under_army as (SELECT ms.id FROM military_subdivisions ms WHERE
     INNER JOIN specific_units on specific_units.id = unit_transport.unit_id
     INNER JOIN transport on unit_transport.transport_id = transport.id
 GROUP BY transport_id)
-SELECT transport_id, t.sum as total_amout, transport_types.name as type FROM t INNER JOIN transport on t.transport_id = transport.id
+SELECT transport.name as transport, t.sum as total_amout, transport_types.name as type FROM t INNER JOIN transport on t.transport_id = transport.id
         INNER JOIN transport_types on transport.type = transport_types.id;
 
 
@@ -39,5 +39,5 @@ WITH t as (SELECT transport_id, sum(unit_transport.amount)  FROM unit_transport
     INNER JOIN transport on unit_transport.transport_id = transport.id
 WHERE unit_id =3
 GROUP BY transport_id)
-SELECT transport_id, t.sum as total_amout, transport_types.name as type FROM t INNER JOIN transport on t.transport_id = transport.id
+SELECT transport.name as transport, t.sum as total_amout, transport_types.name as type FROM t INNER JOIN transport on t.transport_id = transport.id
         INNER JOIN transport_types on transport.type = transport_types.id;
