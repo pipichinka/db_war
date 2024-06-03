@@ -1,4 +1,4 @@
-create view assault_rifles_view(id, name, ammo, fire_rate) as
+CREATE OR REPLACE VIEW assault_rifles_view(id, name, ammo, fire_rate) as
 SELECT ar.id,
        weapons.name,
        ar.ammo,

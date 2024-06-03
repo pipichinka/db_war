@@ -272,58 +272,58 @@ CREATE TABLE IF NOT EXISTS "subdivision_dislocation"(
 );
 
 
-ALTER TABLE "unit_constructions" ADD CONSTRAINT "unit_constructions_fk1" FOREIGN KEY ("unit_id") REFERENCES "military_unit"("id");
-ALTER TABLE "subdivision_dislocation" ADD CONSTRAINT "subdivision_dislocation_fk1" FOREIGN KEY ("construction_id") REFERENCES "unit_constructions"("id");
-ALTER TABLE "subdivision_dislocation" ADD CONSTRAINT "subdivision_dislocation_fk2" FOREIGN KEY ("subdivision_id") REFERENCES "military_subdivisions"("id");
+ALTER TABLE "unit_constructions" ADD CONSTRAINT "unit_constructions_fk1" FOREIGN KEY ("unit_id") REFERENCES "military_unit"("id") ON DELETE CASCADE;
+ALTER TABLE "subdivision_dislocation" ADD CONSTRAINT "subdivision_dislocation_fk1" FOREIGN KEY ("construction_id") REFERENCES "unit_constructions"("id") ON DELETE CASCADE;
+ALTER TABLE "subdivision_dislocation" ADD CONSTRAINT "subdivision_dislocation_fk2" FOREIGN KEY ("subdivision_id") REFERENCES "military_subdivisions"("id") ON DELETE CASCADE;
 
-ALTER TABLE "unit_weapons" ADD CONSTRAINT "unit_weapon_fk1" FOREIGN KEY ("weapon_id") REFERENCES "weapons"("id");
-ALTER TABLE "unit_weapons" ADD CONSTRAINT "unit_weapon_fk2" FOREIGN KEY ("unit_id") REFERENCES "military_unit"("id");
-ALTER TABLE "weapons" ADD CONSTRAINT "weapon_fk1" FOREIGN KEY ("type") REFERENCES "weapon_types"("id");
+ALTER TABLE "unit_weapons" ADD CONSTRAINT "unit_weapon_fk1" FOREIGN KEY ("weapon_id") REFERENCES "weapons"("id") ON DELETE CASCADE;
+ALTER TABLE "unit_weapons" ADD CONSTRAINT "unit_weapon_fk2" FOREIGN KEY ("unit_id") REFERENCES "military_unit"("id") ON DELETE CASCADE;
+ALTER TABLE "weapons" ADD CONSTRAINT "weapon_fk1" FOREIGN KEY ("type") REFERENCES "weapon_types"("id") ON DELETE CASCADE;
 
-ALTER TABLE "unit_transport" ADD CONSTRAINT "unit_transport_fk1" FOREIGN KEY ("transport_id") REFERENCES "transport"("id");
-ALTER TABLE "unit_transport" ADD CONSTRAINT "unit_transport_fk2" FOREIGN KEY ("unit_id") REFERENCES "military_unit"("id");
-ALTER TABLE "transport" ADD CONSTRAINT "transport_fk1" FOREIGN KEY ("type") REFERENCES "transport_types"("id");
-
-
-ALTER TABLE "military_subdivisions" ADD CONSTRAINT "military_subdivisions_fk2" FOREIGN KEY ("type") REFERENCES "subdivision_ranks"("id");
-
-ALTER TABLE "military_subdivisions" ADD CONSTRAINT "military_subdivisions_fk3" FOREIGN KEY ("part_of") REFERENCES "military_subdivisions"("id");
-
-ALTER TABLE "employees" ADD CONSTRAINT "employees_fk1" FOREIGN KEY ("rank") REFERENCES "employee_ranks"("id");
-
-ALTER TABLE "employees" ADD CONSTRAINT "employees_fk2" FOREIGN KEY ("work") REFERENCES "military_subdivisions"("id");
-
-ALTER TABLE "employees" ADD CONSTRAINT "employees_fk3" FOREIGN KEY ("head") REFERENCES "military_subdivisions"("id");
-
-ALTER TABLE "generals" ADD CONSTRAINT "generals_fk0" FOREIGN KEY ("id") REFERENCES "employees"("id");
-ALTER TABLE "colonels" ADD CONSTRAINT "colonels_fk0" FOREIGN KEY ("id") REFERENCES "employees"("id");
-ALTER TABLE "lieutenant_colonels" ADD CONSTRAINT "lieutenant colonels_fk0" FOREIGN KEY ("id") REFERENCES "employees"("id");
-ALTER TABLE "majors" ADD CONSTRAINT "majors_fk0" FOREIGN KEY ("id") REFERENCES "employees"("id");
-ALTER TABLE "captains" ADD CONSTRAINT "captains_fk0" FOREIGN KEY ("id") REFERENCES "employees"("id");
-ALTER TABLE "lieutenants" ADD CONSTRAINT "lieutenants_fk0" FOREIGN KEY ("id") REFERENCES "employees"("id");
-ALTER TABLE "sergeantmajors" ADD CONSTRAINT "sergeantmajors_fk0" FOREIGN KEY ("id") REFERENCES "employees"("id");
-ALTER TABLE "sergeants" ADD CONSTRAINT "sergeants_fk0" FOREIGN KEY ("id") REFERENCES "employees"("id");
-ALTER TABLE "corporals" ADD CONSTRAINT "corporals_fk0" FOREIGN KEY ("id") REFERENCES "employees"("id");
-ALTER TABLE "soldiers" ADD CONSTRAINT "soldiers_fk0" FOREIGN KEY ("id") REFERENCES "employees"("id");
-ALTER TABLE "ensigns" ADD CONSTRAINT "ensigns_fk0" FOREIGN KEY ("id") REFERENCES "employees"("id");
-
-ALTER TABLE "infantry_combat_vehicles" ADD CONSTRAINT "infantry combat vehicles_fk0" FOREIGN KEY ("id") REFERENCES "transport"("id");
-ALTER TABLE "tanks" ADD CONSTRAINT "tanks_fk0" FOREIGN KEY ("id") REFERENCES "transport"("id");
-ALTER TABLE "tractors" ADD CONSTRAINT "tractors_fk0" FOREIGN KEY ("id") REFERENCES "transport"("id");
-ALTER TABLE "vehicles" ADD CONSTRAINT "vehicles_fk0" FOREIGN KEY ("id") REFERENCES "transport"("id");
+ALTER TABLE "unit_transport" ADD CONSTRAINT "unit_transport_fk1" FOREIGN KEY ("transport_id") REFERENCES "transport"("id") ON DELETE CASCADE;
+ALTER TABLE "unit_transport" ADD CONSTRAINT "unit_transport_fk2" FOREIGN KEY ("unit_id") REFERENCES "military_unit"("id") ON DELETE CASCADE;
+ALTER TABLE "transport" ADD CONSTRAINT "transport_fk1" FOREIGN KEY ("type") REFERENCES "transport_types"("id") ON DELETE CASCADE;
 
 
-ALTER TABLE "rifles" ADD CONSTRAINT "rifles_fk0" FOREIGN KEY ("id") REFERENCES "weapons"("id");
-ALTER TABLE "assault_rifles" ADD CONSTRAINT "assault rifles_fk0" FOREIGN KEY ("id") REFERENCES "weapons"("id");
-ALTER TABLE "artilleries" ADD CONSTRAINT "artilleries_fk0" FOREIGN KEY ("id") REFERENCES "weapons"("id");
-ALTER TABLE "missile_weapons" ADD CONSTRAINT "missile_weapons_fk0" FOREIGN KEY ("id") REFERENCES "weapons"("id");
+ALTER TABLE "military_subdivisions" ADD CONSTRAINT "military_subdivisions_fk2" FOREIGN KEY ("type") REFERENCES "subdivision_ranks"("id") ON DELETE CASCADE;
+
+ALTER TABLE "military_subdivisions" ADD CONSTRAINT "military_subdivisions_fk3" FOREIGN KEY ("part_of") REFERENCES "military_subdivisions"("id") ON DELETE SET NULL;
+
+ALTER TABLE "employees" ADD CONSTRAINT "employees_fk1" FOREIGN KEY ("rank") REFERENCES "employee_ranks"("id") ON DELETE CASCADE;
+
+ALTER TABLE "employees" ADD CONSTRAINT "employees_fk2" FOREIGN KEY ("work") REFERENCES "military_subdivisions"("id") ON DELETE CASCADE;
+
+ALTER TABLE "employees" ADD CONSTRAINT "employees_fk3" FOREIGN KEY ("head") REFERENCES "military_subdivisions"("id") ON DELETE SET NULL;
+
+ALTER TABLE "generals" ADD CONSTRAINT "generals_fk0" FOREIGN KEY ("id") REFERENCES "employees"("id") ON DELETE CASCADE;
+ALTER TABLE "colonels" ADD CONSTRAINT "colonels_fk0" FOREIGN KEY ("id") REFERENCES "employees"("id") ON DELETE CASCADE;
+ALTER TABLE "lieutenant_colonels" ADD CONSTRAINT "lieutenant colonels_fk0" FOREIGN KEY ("id") REFERENCES "employees"("id") ON DELETE CASCADE;
+ALTER TABLE "majors" ADD CONSTRAINT "majors_fk0" FOREIGN KEY ("id") REFERENCES "employees"("id") ON DELETE CASCADE;
+ALTER TABLE "captains" ADD CONSTRAINT "captains_fk0" FOREIGN KEY ("id") REFERENCES "employees"("id") ON DELETE CASCADE;
+ALTER TABLE "lieutenants" ADD CONSTRAINT "lieutenants_fk0" FOREIGN KEY ("id") REFERENCES "employees"("id") ON DELETE CASCADE;
+ALTER TABLE "sergeantmajors" ADD CONSTRAINT "sergeantmajors_fk0" FOREIGN KEY ("id") REFERENCES "employees"("id") ON DELETE CASCADE;
+ALTER TABLE "sergeants" ADD CONSTRAINT "sergeants_fk0" FOREIGN KEY ("id") REFERENCES "employees"("id") ON DELETE CASCADE;
+ALTER TABLE "corporals" ADD CONSTRAINT "corporals_fk0" FOREIGN KEY ("id") REFERENCES "employees"("id") ON DELETE CASCADE;
+ALTER TABLE "soldiers" ADD CONSTRAINT "soldiers_fk0" FOREIGN KEY ("id") REFERENCES "employees"("id") ON DELETE CASCADE;
+ALTER TABLE "ensigns" ADD CONSTRAINT "ensigns_fk0" FOREIGN KEY ("id") REFERENCES "employees"("id") ON DELETE CASCADE;
+
+ALTER TABLE "infantry_combat_vehicles" ADD CONSTRAINT "infantry combat vehicles_fk0" FOREIGN KEY ("id") REFERENCES "transport"("id") ON DELETE CASCADE;
+ALTER TABLE "tanks" ADD CONSTRAINT "tanks_fk0" FOREIGN KEY ("id") REFERENCES "transport"("id") ON DELETE CASCADE;
+ALTER TABLE "tractors" ADD CONSTRAINT "tractors_fk0" FOREIGN KEY ("id") REFERENCES "transport"("id") ON DELETE CASCADE;
+ALTER TABLE "vehicles" ADD CONSTRAINT "vehicles_fk0" FOREIGN KEY ("id") REFERENCES "transport"("id") ON DELETE CASCADE;
 
 
-ALTER TABLE "employees_specializations" ADD CONSTRAINT "employees_specializations_fk0" FOREIGN KEY ("employee_id") REFERENCES "employees"("id");
+ALTER TABLE "rifles" ADD CONSTRAINT "rifles_fk0" FOREIGN KEY ("id") REFERENCES "weapons"("id") ON DELETE CASCADE;
+ALTER TABLE "assault_rifles" ADD CONSTRAINT "assault rifles_fk0" FOREIGN KEY ("id") REFERENCES "weapons"("id") ON DELETE CASCADE;
+ALTER TABLE "artilleries" ADD CONSTRAINT "artilleries_fk0" FOREIGN KEY ("id") REFERENCES "weapons"("id") ON DELETE CASCADE;
+ALTER TABLE "missile_weapons" ADD CONSTRAINT "missile_weapons_fk0" FOREIGN KEY ("id") REFERENCES "weapons"("id") ON DELETE CASCADE;
 
-ALTER TABLE "employees_specializations" ADD CONSTRAINT "employees_specializations_fk1" FOREIGN KEY ("spec_id") REFERENCES "military_specializations"("id");
-ALTER TABLE "military_unit" ADD CONSTRAINT "military_unit_fk0" FOREIGN KEY ("id") REFERENCES "military_subdivisions"("id");
 
-ALTER TABLE "military_unit" ADD CONSTRAINT "military_unit_fk1" FOREIGN KEY ("place_id") REFERENCES "places"("id");
+ALTER TABLE "employees_specializations" ADD CONSTRAINT "employees_specializations_fk0" FOREIGN KEY ("employee_id") REFERENCES "employees"("id") ON DELETE CASCADE;
 
-ALTER TABLE "places" ADD CONSTRAINT "places_fk0" FOREIGN KEY ("region_id") REFERENCES "military_region"("id");
+ALTER TABLE "employees_specializations" ADD CONSTRAINT "employees_specializations_fk1" FOREIGN KEY ("spec_id") REFERENCES "military_specializations"("id") ON DELETE CASCADE;
+ALTER TABLE "military_unit" ADD CONSTRAINT "military_unit_fk0" FOREIGN KEY ("id") REFERENCES "military_subdivisions"("id") ON DELETE CASCADE;
+
+ALTER TABLE "military_unit" ADD CONSTRAINT "military_unit_fk1" FOREIGN KEY ("place_id") REFERENCES "places"("id") ON DELETE CASCADE;
+
+ALTER TABLE "places" ADD CONSTRAINT "places_fk0" FOREIGN KEY ("region_id") REFERENCES "military_region"("id") ON DELETE CASCADE;

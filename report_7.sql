@@ -3,10 +3,6 @@
 --подразделения.
 
 
-SELECT * FROM unit_constructions
-
-WHERE unit_constructions.unit_id = 3;
-
 -- более одного
 WITH c as (SELECT unit_constructions.id, count(sd.construction_id) FROM unit_constructions LEFT JOIN public.subdivision_dislocation sd on unit_constructions.id = sd.construction_id
 GROUP BY unit_constructions.id)

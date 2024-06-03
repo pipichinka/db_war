@@ -1,5 +1,9 @@
 --Получить данные о наличии боевой технике в целом и с учетом указанной категории или 
 --вида во всех частях военного округа, в отдельной армии, дивизии, корпусе, военной части.
+WITH t as (SELECT transport_id, sum(unit_transport.amount) as total_amout  FROM unit_transport
+    INNER JOIN transport on unit_transport.transport_id = transport.id
+GROUP BY transport_id)
+SELECT transport.name as name, t.total_amout as total_amout FROM t INNER JOIN transport  on transport.id = t.transport_i;
 
 WITH
     region_units as (SELECT military_unit.id as id from military_unit INNER JOIN places ON military_unit.place_id = places.id
@@ -9,7 +13,8 @@ WHERE places.region_id = 2),
     INNER JOIN transport on unit_transport.transport_id = transport.id
 GROUP BY transport_id)
 SELECT transport.name as transport, t.sum as total_amout, transport_types.name as type FROM t INNER JOIN transport on t.transport_id = transport.id
-        INNER JOIN transport_types on transport.type = transport_types.id;
+        INNER JOIN transport_types on transport.type = transport_types.id
+        WHERE transport.type = ;
 
 -- для армии
 WITH
@@ -21,7 +26,8 @@ WITH
     INNER JOIN transport on unit_transport.transport_id = transport.id
 GROUP BY transport_id)
 SELECT transport.name as transport, t.sum as total_amout, transport_types.name as type FROM t INNER JOIN transport on t.transport_id = transport.id
-        INNER JOIN transport_types on transport.type = transport_types.id;
+        INNER JOIN transport_types on transport.type = transport_types.id
+        WHERE transport.type = ;
 
 -- для под армии
 WITH    specific_under_army as (SELECT ms.id FROM military_subdivisions ms WHERE ms.id = 2),
@@ -31,7 +37,8 @@ WITH    specific_under_army as (SELECT ms.id FROM military_subdivisions ms WHERE
     INNER JOIN transport on unit_transport.transport_id = transport.id
 GROUP BY transport_id)
 SELECT transport.name as transport, t.sum as total_amout, transport_types.name as type FROM t INNER JOIN transport on t.transport_id = transport.id
-        INNER JOIN transport_types on transport.type = transport_types.id;
+        INNER JOIN transport_types on transport.type = transport_types.id
+        WHERE transport.type = ;
 
 
 
@@ -40,4 +47,5 @@ WITH t as (SELECT transport_id, sum(unit_transport.amount)  FROM unit_transport
 WHERE unit_id =3
 GROUP BY transport_id)
 SELECT transport.name as transport, t.sum as total_amout, transport_types.name as type FROM t INNER JOIN transport on t.transport_id = transport.id
-        INNER JOIN transport_types on transport.type = transport_types.id;
+        INNER JOIN transport_types on transport.type = transport_types.id
+        WHERE transport.type = ;
